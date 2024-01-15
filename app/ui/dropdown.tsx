@@ -1,38 +1,35 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { fetchCurrencies } from '../lib/data';
-import Image from 'next/image';
+import { Currency } from '../lib/definitions';
 
 export default function Dropdown() {
-	
-	const [selectedCurrency, setSelectedCurrency] = useState(null);
-	const [currencies, setCurrencies] = useState([]);
+	const [selectedCurrency, setSelectedCurrency] = useState<Currency | null>(null);
+	const [currencies, setCurrencies] = useState<Currency[]>([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const data = await fetchCurrencies();
 				setCurrencies(data);
-				setSelectedCurrency(data[1]); // Default selected currency
+				setSelectedCurrency(data[1]);
 			} catch (error) {
 				console.error('Error fetching currencies:', error);
 			}
 		};
+
 		fetchData();
 	}, []);
 
 	if (!selectedCurrency) {
-		return <div>
-					Loading...
-			   </div>;
+		return <div>Loading...</div>;
 	}
 
 	return (
-		
 		<div className="mt-2">
-
 			<label htmlFor="price" className="flex text-sm font-semibold leading-6 text-[#002859] select-none">
 				Seleccionar moneda
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="rgba(0, 0, 0, 0.5)" className="w-4 h-4 self-center ml-1">
@@ -45,7 +42,7 @@ export default function Dropdown() {
 					<>
 						<Listbox.Button className="block border mt-2 w-full h-2/4 p-3 text-sm font-light rounded-md border-gray-200 focus:border-white focus:ring-2 focus:ring-indigo-100 focus:ring-opacity-50">
 							<div className="flex items-center">
-								<Image src={selectedCurrency.image as string} alt={selectedCurrency.name} width={30} height={30} />
+								<Image src={selectedCurrency.image} alt={selectedCurrency.name} width={30} height={30} />
 								<span className="ml-2">{selectedCurrency.name}</span>
 							</div>
 						</Listbox.Button>
@@ -69,7 +66,7 @@ export default function Dropdown() {
 										{({ selected, active }) => (
 											<>
 												<div className="flex items-center">
-													<Image src={currency.image as string} alt={currency.name} width={30} height={30} />
+													<Image src={currency.image} alt={currency.name} width={30} height={30} />
 													<span className={`${selected ? 'font-semibold' : 'font-normal'} ml-2 block truncate`}>
 														{currency.name}
 													</span>
