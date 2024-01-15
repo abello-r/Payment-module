@@ -1,0 +1,15 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'payments.pre-bnvo.com',
+				port: '',
+				pathname: '/media/crytocurrencies/**',
+			},
+		],
+	},
+}
+
+module.exports = nextConfig
