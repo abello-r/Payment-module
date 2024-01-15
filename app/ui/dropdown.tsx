@@ -45,7 +45,7 @@ export default function Dropdown() {
 					<>
 						<Listbox.Button className="block border mt-2 w-full h-2/4 p-3 text-sm font-light rounded-md border-gray-200 focus:border-white focus:ring-2 focus:ring-indigo-100 focus:ring-opacity-50">
 							<div className="flex items-center">
-								<Image src={selectedCurrency.image} alt={selectedCurrency.name} width={30} height={30} />
+								<Image src={selectedCurrency.image as string} alt={selectedCurrency.name} width={30} height={30} />
 								<span className="ml-2">{selectedCurrency.name}</span>
 							</div>
 						</Listbox.Button>
