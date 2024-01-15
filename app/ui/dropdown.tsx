@@ -69,7 +69,7 @@ export default function Dropdown() {
 										{({ selected, active }) => (
 											<>
 												<div className="flex items-center">
-													<Image src={currency.image} alt={currency.name} width={30} height={30} />
+													<Image src={currency.image as string} alt={currency.name} width={30} height={30} />
 													<span className={`${selected ? 'font-semibold' : 'font-normal'} ml-2 block truncate`}>
 														{currency.name}
 													</span>
