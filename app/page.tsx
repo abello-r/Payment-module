@@ -4,9 +4,9 @@ import SubmitBtn from '@/app/ui/submit-button';
 
 export default async function Home() {
 	return (
-		<main className="flex-col min-h-screen bg-white p-20 w-full flex justify-center items-center">
+		<main className="flex flex-col justify-center items-center w-screen min-h-screen p-5 bg-white">
 
-			<div className="flex-col bg-white w-2/4 h-2/4 rounded-[20px] justify-center items-center p-8 shadow-[1px_1px_3px_1px_rgba(0,0,0,0.1)]">
+			<div className="flex-col bg-white w-[80%] sm:w-3/4 md:w-2/4 h-2/4 rounded-[20px] justify-center items-center p-8 shadow-[1px_1px_3px_1px_rgba(0,0,0,0.1)]">
 
 				{/* Title */}
 				<h1 className="font-semibold text-center text-[#002859] text-3xl select-none">
